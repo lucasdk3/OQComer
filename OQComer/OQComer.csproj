@@ -30,6 +30,9 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -40,8 +43,7 @@
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
-
-		<!-- Custom Fonts -->
+		<MauiImage Update="Resources\Images\logo.svg" BaseSize="120,120" />
 		<MauiFont Include="Resources\Fonts\*" />
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
@@ -51,5 +53,24 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
-
+	<ItemGroup>
+	  <Folder Include="Modules\" />
+	  <Folder Include="Modules\Home\" />
+	  <Folder Include="Modules\Home\Domain\" />
+	  <Folder Include="Modules\Home\Presenter\" />
+	  <Folder Include="Modules\Home\Infra\" />
+	  <Folder Include="Resources\Constants\" />
+	  <Folder Include="Resources\Constants\" />
+	  <Folder Include="Modules\Home\Presenter\Components\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <BundleResource Include="Resources\Constants\ConstantsStrings.cs" />
+	  <BundleResource Include="Resources\Images\logo.svg" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiXaml Remove="MainPage.xaml" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Resources\Images\logo.svg" />
+	</ItemGroup>
 </Project>

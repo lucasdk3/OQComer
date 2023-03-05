@@ -8,8 +8,8 @@
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        ContentTemplate="{DataTemplate local:Modules.Home.Presenter.HomePage}"
+        Route="HomePage" />
 
 </Shell>
 
